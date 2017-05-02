@@ -225,9 +225,15 @@
   // };
 
   _.some = function(collection, iterator) {
-    // TIP: There's a very clever way to re-use every() here.
-  
- };
+      // TIP: There's a very clever way to re-use every() here.
+      var check = iterator || _.identity;
+
+      return !_.every(collection, function(ele) {
+          if (!check(ele)) {
+              return true;
+          }
+      });
+  };
 
 
   //   var check = iterator || _.identity;
