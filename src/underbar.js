@@ -106,8 +106,16 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+       var uniq = {};
+       return _.reduce(array, function(uniqArr, ele) {
+           if (!uniq.hasOwnProperty(ele)) {
+               uniq[ele] = true;
+               uniqArr.push(ele);
+           }
+           return uniqArr;
+       }, []);
+  };
 
-    };
 
 
   // Return the results of applying an iterator to each element.
