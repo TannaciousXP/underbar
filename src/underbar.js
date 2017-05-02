@@ -94,8 +94,15 @@
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
+      return _.reduce(collection, function(rejectArr, ele) {
+          if (!test(ele)) {
+              rejectArr.push(ele);
+          }
 
+          return rejectArr;
+      }, []);
   };
+
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
