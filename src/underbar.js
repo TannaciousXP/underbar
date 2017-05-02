@@ -120,8 +120,12 @@
 
   // Return the results of applying an iterator to each element.
   _.map = function(collection, iterator) {
-
+      return _.reduce(collection, function(mappedArr, ele) {
+          mappedArr.push(iterator(ele));
+          return mappedArr;
+      }, []);
   };
+
 
   /*
    * TIP: map is really handy when you want to transform an array of
