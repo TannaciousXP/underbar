@@ -341,8 +341,17 @@
 
 
   _.memoize = function(func) {
-
+      var cache = {};
+      return function() {
+          var args = [].slice.call(arguments);
+          var key = JSON.stringify(args);
+          if (!cache.hasOwnProperty(key)) {
+              cache[key] = func.apply(this, args);
+          }
+          return cache[key];
+      };
   };
+
 
 
 
