@@ -83,9 +83,14 @@
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
-
-
+      return _.reduce(collection, function(filterArr, value) {
+          if (test(value)) {
+              filterArr.push(value);
+          }
+          return filterArr;
+      }, []);
   };
+
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
